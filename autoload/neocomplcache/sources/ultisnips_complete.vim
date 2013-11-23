@@ -36,20 +36,25 @@ endfunction"}}}
 " snippet for expanding, it checks for completion window and if it's
 " shown, selects first element. If there's no completion window it tries to
 " jump to next placeholder. If there's no placeholder it just returns TAB key
-function! g:UltiSnips_Complete()
+function! g:UltiSnips_Complete(...)
+    if pumvisible()
+        return "\<Enter>\<C-r>=g:UltiSnips_Complete('p')\<CR>"
+    endif
     call UltiSnips_ExpandSnippet()
     if g:ulti_expand_res == 0
-        "if pumvisible()
-        "    return "\<C-n>"
-        "else
-        call UltiSnips_JumpForwards()
-        if g:ulti_jump_forwards_res == 0
-            return "\<TAB>"
+        if a:0==1
+          return ""
+        else
+          call UltiSnips_JumpForwards()
+          if g:ulti_jump_forwards_res == 0
+              return "\<TAB>"
+          endif
         endif
-        "endif
     endif
     return ""
 endfunction
+
+
 
 " Get Completion list based on UltiSnips function used in <C-Tab> completion
 " list
