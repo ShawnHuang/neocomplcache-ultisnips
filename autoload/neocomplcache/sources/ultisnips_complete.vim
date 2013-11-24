@@ -24,7 +24,7 @@ endfunction"}}}
 
 
 function! s:source.get_keyword_pos(cur_text) "{{{
-  return match(a:cur_text, '\S*$')
+  return match(a:cur_text, '[^.[:blank:]]*$')
 endfunction"}}}
 
 function! s:source.get_complete_words(cur_keyword_pos, cur_keyword_str) "{{{
