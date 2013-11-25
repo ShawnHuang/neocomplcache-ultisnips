@@ -18,8 +18,8 @@ function! s:source.initialize() "{{{
   "exec "py sys.path.append(vim.eval('g:UltiSnipsPythonPath'))"
 
   " Map completion function
-  "exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-  "exec "snoremap <silent> " . g:UltiSnipsExpandTrigger . " <Esc>:call UltiSnips_ExpandSnippetOrJump()<cr>"
+  exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+  exec "snoremap <silent> " . g:UltiSnipsExpandTrigger . " <Esc>:call UltiSnips_ExpandSnippetOrJump()<cr>"
 endfunction"}}}
 
 
@@ -38,7 +38,7 @@ endfunction"}}}
 " jump to next placeholder. If there's no placeholder it just returns TAB key
 function! g:UltiSnips_Complete(...)
     if pumvisible()
-        return "\<Enter>\<C-r>=g:UltiSnips_Complete('p')\<CR>"
+        return "\<C-y>\<C-r>=g:UltiSnips_Complete('p')\<CR>"
     endif
     call UltiSnips_ExpandSnippet()
     if g:ulti_expand_res == 0
