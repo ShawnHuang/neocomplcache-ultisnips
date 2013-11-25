@@ -73,6 +73,7 @@ function! g:UltiSnips_CRComplete(...)
   if pumvisible()
     return "\<C-y>\<C-r>=g:UltiSnips_CRComplete('p')\<CR>"
   else
+    echo ""
     if a:0==1
       call UltiSnips_ExpandSnippet()
       if g:ulti_expand_res == 0
