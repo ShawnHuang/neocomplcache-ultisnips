@@ -37,21 +37,36 @@ endfunction"}}}
 " shown, selects first element. If there's no completion window it tries to
 " jump to next placeholder. If there's no placeholder it just returns TAB key
 function! g:UltiSnips_Complete(...)
-    if pumvisible()
-        return "\<C-y>\<C-r>=g:UltiSnips_Complete('p')\<CR>"
-    endif
-    call UltiSnips_ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if a:0==1
-          return ""
-        else
-          call UltiSnips_JumpForwards()
-          if g:ulti_jump_forwards_res == 0
+    call UltiSnips_JumpForwards()
+    if g:ulti_jump_forwards_res == 0
+        if pumvisible()
+            return "\<C-y>\<C-r>=g:UltiSnips_Complete('p')\<CR>"
+        endif
+        call UltiSnips_ExpandSnippet()
+        if g:ulti_expand_res == 0
+            if a:0==1
+              return ""
+            else
               return "\<TAB>"
-          endif
+            endif
         endif
     endif
     return ""
+    "if pumvisible()
+    "    return "\<C-y>\<C-r>=g:UltiSnips_Complete('p')\<CR>"
+    "endif
+    "call UltiSnips_ExpandSnippet()
+    "if g:ulti_expand_res == 0
+    "    if a:0==1
+    "      return ""
+    "    else
+    "      call UltiSnips_JumpForwards()
+    "      if g:ulti_jump_forwards_res == 0
+    "          return "\<TAB>"
+    "      endif
+    "    endif
+    "endif
+    "return ""
 endfunction
 
 function! g:UltiSnips_CRComplete(...)
