@@ -54,6 +54,9 @@ function! g:UltiSnips_Complete(...)
     return ""
 endfunction
 
+function! g:UltiSnips_CRComplete()
+  return "\<CR>"
+endfunction
 
 
 " Get Completion list based on UltiSnips function used in <C-Tab> completion
