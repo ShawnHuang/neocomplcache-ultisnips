@@ -54,8 +54,20 @@ function! g:UltiSnips_Complete(...)
     return ""
 endfunction
 
-function! g:UltiSnips_CRComplete()
-  return "\<CR>"
+function! g:UltiSnips_CRComplete(...)
+  if pumvisible()
+    return "\<C-y>\<C-r>=g:UltiSnips_CRComplete('p')\<CR>"
+  else
+    if a:0==1
+      call UltiSnips_ExpandSnippet()
+      if g:ulti_expand_res == 0
+        return "\<CR>"
+      endif
+    else
+      return "\<CR>"
+    endif
+  endif
+  return ""
 endfunction
 
 
