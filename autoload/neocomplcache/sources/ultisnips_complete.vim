@@ -69,9 +69,9 @@ function! g:UltiSnips_Complete(...)
     "return ""
 endfunction
 
-function! g:UltiSnips_CRComplete(...)
+function! neocomplcache#sources#ultisnips_complete#UltiSnips_CRComplete(...)
   if pumvisible()
-    return "\<C-y>\<C-r>=g:UltiSnips_CRComplete('p')\<CR>"
+    return "\<C-y>\<C-r>=neocomplcache#sources#ultisnips_complete#UltiSnips_CRComplete('p')\<CR>"
   else
     echo ""
     if a:0==1
