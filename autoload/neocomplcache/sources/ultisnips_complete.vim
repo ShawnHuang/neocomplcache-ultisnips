@@ -73,6 +73,7 @@ function! neocomplcache#sources#ultisnips_complete#UltiSnips_CRComplete(...)
   if pumvisible()
     return "\<C-y>\<C-r>=neocomplcache#sources#ultisnips_complete#UltiSnips_CRComplete('p')\<CR>"
   else
+    redraw
     echo ""
     if a:0==1
       call UltiSnips_ExpandSnippet()
